@@ -79,7 +79,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
     private fun showDialog (message:String){
         val dialog = AlertDialog.Builder(this)
-            .setTitle("Management App")
+            .setTitle("Quallet")
             .setMessage(message)
             .setCancelable(false)
 
