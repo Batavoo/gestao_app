@@ -98,32 +98,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_editext_email" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/bevietnampro_medium"
-        android:text="Don't have an account?"
-        android:textColor="#878B93"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_button_signup" />
-
-    <TextView
-        android:id="@+id/login_textview_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/bevietnampro_medium"
-        android:text="Sign up"
-        android:textColor="#3978F1"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/register_button_signup" />
-
     <EditText
         android:id="@+id/register_editext_name"
         android:layout_width="0dp"

@@ -30,16 +30,10 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/bevietnampro_medium"
         android:text="Welcome! Please enter your details."
-        android:textColor="#878B93"
-        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        style="@style/Medium" />
 
     <TextView
         android:id="@+id/textView4"
@@ -65,10 +59,10 @@
         android:textColor="#42484F"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_editext_email" />
+        app:layout_constraintTop_toBottomOf="@+id/login_editext_email" />
 
     <EditText
-        android:id="@+id/register_editext_pw"
+        android:id="@+id/login_editext_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -86,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/register_button_signup"
+        android:id="@+id/login_button_signin"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
@@ -99,7 +93,7 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_editext_pw" />
+        app:layout_constraintTop_toBottomOf="@+id/login_editext_pw" />
 
     <TextView
         android:id="@+id/textView6"
@@ -112,7 +106,7 @@
         android:textColor="#878B93"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_button_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/login_button_signin" />
 
     <TextView
         android:id="@+id/login_textview_signup"
@@ -125,10 +119,10 @@
         android:textColor="#3978F1"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/register_button_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/login_button_signin" />
 
     <EditText
-        android:id="@+id/register_editext_email"
+        android:id="@+id/login_editext_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
