@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509451678642",
+    "project_id": "gestao-app-64387",
+    "storage_bucket": "gestao-app-64387.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509451678642:android:a105408fcb93b747dc6aab",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509451678642-kdi0v7p85t39tg18njmtfqom9iv4fej7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARdvyEDOvriHUThXuiixN-6V4hW7ydY2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509451678642-kdi0v7p85t39tg18njmtfqom9iv4fej7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
