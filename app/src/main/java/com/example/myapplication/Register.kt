@@ -13,6 +13,8 @@ import androidx.appcompat.app.AlertDialog
 import com.example.myapplication.entity.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class Register : AppCompatActivity(), View.OnClickListener {
@@ -25,7 +27,8 @@ class Register : AppCompatActivity(), View.OnClickListener {
     private lateinit var mRegisterSignup: Button
     private lateinit var mRegisterSigninText: TextView
 
-    private lateinit var mAuth : FirebaseAuth
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mDatabase: FirebaseDatabase
     private val handler = Handler(Looper.getMainLooper())
 
 
@@ -34,6 +37,7 @@ class Register : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_register)
 
         mAuth = Firebase.auth
+        mDatabase = Firebase.database
 
         mRegisterName = findViewById(R.id.register_editext_name)
         mRegisterPhone = findViewById(R.id.register_editext_phone)
@@ -81,13 +85,20 @@ class Register : AppCompatActivity(), View.OnClickListener {
 
             if (password == passwordConfirmation) {
 
+                // Guardar dados no banco de dados
+                val usersRef = mDatabase.getReference("/users")
+                val key = usersRef.push().key ?: ""
+
                 val user = User(
+                    id = key,
                     name = name.toString(),
                     phone = phone.toString(),
-                    email = email.toString(),
-                    password = password.toString()
+                    email = email.toString()
                 )
 
+                usersRef.child(key).setValue(user)
+
+                // Cadastrar usuário
                 mAuth.createUserWithEmailAndPassword(email.toString(), password.toString())
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){

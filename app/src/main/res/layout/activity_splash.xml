@@ -37,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="128dp"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/bevietnampro_medium"
         android:text="Make Your Life Easier"
         android:textColor="#FAFAFA"
