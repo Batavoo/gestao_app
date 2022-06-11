@@ -110,21 +110,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <EditText
-        android:id="@+id/transaction_editext_date"
+    <TextView
+        android:id="@+id/transaction_textview_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="6dp"
         android:background="@drawable/text_background"
+        android:clickable="false"
         android:ems="10"
         android:fontFamily="@font/bevietnampro_regular"
-        android:hint="Ex: 14 January 2022"
+        android:hint="--/--/----"
         android:inputType="textEmailAddress"
+        android:padding="10dp"
         android:paddingStart="10dp"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/transaction_button_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -153,7 +156,7 @@
         android:layout_marginTop="15dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_editext_date">
+        app:layout_constraintTop_toBottomOf="@+id/transaction_textview_date">
 
         <RadioButton
             android:id="@+id/rbRevenue"
@@ -178,7 +181,19 @@
 
     </RadioGroup>
 
-
+    <Button
+        android:id="@+id/transaction_button_date"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="#3978F1"
+        app:cornerRadius="8dp"
+        app:icon="@drawable/calendar"
+        app:iconPadding="5dp"
+        app:iconSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

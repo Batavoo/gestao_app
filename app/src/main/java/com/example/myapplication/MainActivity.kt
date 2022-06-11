@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.adapter.TransactionAdapter
@@ -83,6 +84,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TransactionListe
     override fun onStart() {
         super.onStart()
 
+
+
         val userRef = mDatabase.getReference("/users")
         userRef
             .orderByChild("email")
@@ -91,13 +94,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TransactionListe
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (children in snapshot.children){
                         val user = snapshot.children.first().getValue(User::class.java)
+                        mUserKey = user?.id ?: ""
 
-                        var receitas = user?.transactions?.values?.toList()?.filter { it.revenue }
+                        mMainUsername.text = user?.name
+
+                        var receitas = user?.transactions?.values?.toList()?.filter { it.revenue }?.sortedWith(
+                            compareBy { it.date })?.take(5)
                         mRevenueAdapter = receitas?.toList()?.let { TransactionAdapter(it) }!!
                         mRevenueAdapter.setOnTransactionListener(this@MainActivity)
                         mMainRevenueList.adapter = mRevenueAdapter
 
-                        var despesas = user?.transactions?.values?.toList()?.filter { !it.revenue }
+                        var despesas = user?.transactions?.values?.toList()?.filter { !it.revenue }?.sortedWith(
+                            compareBy { it.date })?.take(5)
                         mExpenseAdapter = despesas?.toList()?.let { TransactionAdapter(it) }!!
                         mExpenseAdapter.setOnTransactionListener(this@MainActivity)
                         mMainExpenseList.adapter = mExpenseAdapter
@@ -115,8 +123,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TransactionListe
     }
 
     override fun setOnItemClickListener(view: View, position: Int){
-        if( view.parent == mMainRevenueList) { // Eu to tendo um problema com a posição dos itens nas listas, e o app crasha
-            val it = Intent(this, TransactionActivity::class.java) // fica dando index out of bounds e eu nao entendi pq
+        if( view.parent == mMainRevenueList) {
+            val it = Intent(this, TransactionActivity::class.java)
             it.putExtra("transactionKey",  mRevenueAdapter.list[position].id)
             it.putExtra("userKey",  mUserKey)
             startActivity(it)
@@ -129,7 +137,58 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TransactionListe
     }
 
     override fun setOnItemLongClickListener(view: View, position: Int) {
-        TODO("Not yet implemented")
+        if (view.parent == mMainRevenueList) {
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Quallet")
+                .setMessage("Are you sure that you want to delete this transaction?")
+                .setCancelable(false)
+                .setPositiveButton("Yes"){ dialog, _ ->
+                    val transaction = mRevenueAdapter.list[position]
+                    val transactionRef = mDatabase
+                        .reference
+                        .child("/users")
+                        .child(mUserKey)
+                        .child("/transactions")
+                        .child(transaction.id)
+
+                    transactionRef.removeValue()
+
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No"){ dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+
+            dialog.show()
+        } else if (view.parent == mMainExpenseList){
+
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Quallet")
+                .setMessage("Are you sure that you want to delete this transaction?")
+                .setCancelable(false)
+                .setPositiveButton("Yes"){ dialog, _ ->
+                    val transaction = mExpenseAdapter.list[position]
+                    val transactionRef = mDatabase
+                        .reference
+                        .child("/users")
+                        .child(mUserKey)
+                        .child("/transactions")
+                        .child(transaction.id)
+
+                    transactionRef.removeValue()
+
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No"){ dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+
+            dialog.show()
+
+        }
+
     }
 
 
