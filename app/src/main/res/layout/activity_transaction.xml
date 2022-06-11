@@ -137,39 +137,48 @@
         android:layout_marginEnd="30dp"
         android:backgroundTint="#3978F1"
         android:fontFamily="@font/bevietnampro_semibold"
-        android:text="Sign up"
+        android:text="Create"
         android:textAllCaps="false"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_checkBox_revenue" />
+        app:layout_constraintTop_toBottomOf="@+id/transaction_rg" />
 
-    <CheckBox
-        android:id="@+id/transaction_checkBox_revenue"
-        android:layout_width="wrap_content"
+
+    <RadioGroup
+        android:id="@+id/transaction_rg"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="32dp"
-        android:buttonTint="#3978F1"
-        android:checked="false"
-        android:fontFamily="@font/bevietnampro_regular"
-        android:text="Revenue"
-        android:textColor="#42484F"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_editext_date" />
+        app:layout_constraintTop_toBottomOf="@+id/transaction_editext_date">
 
-    <CheckBox
-        android:id="@+id/transaction_checkBox_expense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="32dp"
-        android:buttonTint="#3978F1"
-        android:checked="false"
-        android:fontFamily="@font/bevietnampro_regular"
-        android:text="Expense"
-        android:textColor="#42484F"
-        app:layout_constraintStart_toEndOf="@+id/transaction_checkBox_revenue"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_editext_date" />
+        <RadioButton
+            android:id="@+id/rbRevenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#3978F1"
+            android:checked="false"
+            android:fontFamily="@font/bevietnampro_regular"
+            android:text="Revenue    "
+            android:textColor="#42484F" />
+
+        <RadioButton
+            android:id="@+id/rbExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#3978F1"
+            android:checked="false"
+            android:fontFamily="@font/bevietnampro_regular"
+            android:text="Expense"
+            android:textColor="#42484F" />
+
+
+    </RadioGroup>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
