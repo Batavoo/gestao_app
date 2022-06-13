@@ -103,9 +103,9 @@ class TransactionActivity : AppCompatActivity(), TransactionListener {
                 return@setOnClickListener
             }
 
-            if (type == 2131296800){
+            if (mTransactionRevenue.isChecked){
             revenue = true
-            } else if (type == 2131296799){
+            } else if (mTransactionExpense.isChecked){
             revenue = false
             }
 
